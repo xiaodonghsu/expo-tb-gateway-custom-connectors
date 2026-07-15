@@ -1,0 +1,259 @@
+{
+  "name": "Bestlink IOT Gateway Connector",
+  "id": "29ddd99d-c4b0-4ed0-a2f1-929f42bd2505",
+  "devices": [
+    {
+      "name": "F3-AirCondition-North",
+      "deviceType": "APIDevices",
+      "tb_attributes": [],
+      "static_attributes": {
+        "deviceName": "F3-AirCondition-North",
+        "deviceCode": "1000e4120100000000007ff0a85aade0"
+      },
+      "tb_telemetry": [
+        {
+          "period": 60,
+          "api": {
+            "url": "http://192.168.0.106:9021/app/deviceCtrl/getRunStatus?devCode=1000e4120100000000007ff0a85aade0",
+            "method": "GET",
+            "headers": {
+              "Content-Type": "application/json",
+              "X-Api-Key": "sk-ffc0ff905a2d44b8b791e7f1016fc2d9"
+            }
+          },
+          "pivot": {
+            "path": "data",
+            "key_field": "attrCode",
+            "value_field": "attrValue",
+            "include_keys": [
+              "on",
+              "thermostatTemperatureSetpoint",
+              "fanSpeed"
+            ],
+            "fields": {
+              "deviceName": "deviceName",
+              "deviceCode": "deviceCode"
+            }
+          }
+        }
+      ],
+      "static_telemetry": {},
+      "tb_rpc": [
+        {
+          "method": [
+            "open",
+            "screen_startup",
+            "startup",
+            "on"
+          ],
+          "delay": 0,
+          "api": {
+            "url": "http://192.168.0.106:9021/app/deviceCtrl/control",
+            "method": "POST",
+            "headers": {
+              "Content-Type": "application/json",
+              "X-Api-Key": "sk-ffc0ff905a2d44b8b791e7f1016fc2d9"
+            },
+            "data": {
+              "devCode": "1000e4120100000000007ff0a85aade0",
+              "key": "on",
+              "value": "1"
+            }
+          }
+        },
+        {
+          "method": [
+            "close",
+            "screen_shutdown",
+            "shutdown",
+            "off"
+          ],
+          "delay": 0,
+          "api": {
+            "url": "http://192.168.0.106:9021/app/deviceCtrl/control",
+            "method": "POST",
+            "headers": {
+              "Content-Type": "application/json",
+              "X-Api-Key": "sk-ffc0ff905a2d44b8b791e7f1016fc2d9"
+            },
+            "data": {
+              "devCode": "1000e4120100000000007ff0a85aade0",
+              "key": "on",
+              "value": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "F3-AirCondition-South",
+      "deviceType": "APIDevices",
+      "tb_attributes": [],
+      "static_attributes": {
+        "deviceName": "F3-AirCondition-South",
+        "deviceCode": "1000e412010000000000d7c9980a69e0"
+      },
+      "tb_telemetry": [
+        {
+          "period": 60,
+          "api": {
+            "url": "http://192.168.0.106:9021/app/deviceCtrl/getRunStatus?devCode=1000e412010000000000d7c9980a69e0",
+            "method": "GET",
+            "headers": {
+              "Content-Type": "application/json",
+              "X-Api-Key": "sk-ffc0ff905a2d44b8b791e7f1016fc2d9"
+            }
+          },
+          "pivot": {
+            "path": "data",
+            "key_field": "attrCode",
+            "value_field": "attrValue",
+            "include_keys": [
+              "on",
+              "thermostatTemperatureSetpoint",
+              "fanSpeed"
+            ],
+            "fields": {
+              "deviceName": "deviceName",
+              "deviceCode": "deviceCode"
+            }
+          }
+        }
+      ],
+      "static_telemetry": {},
+      "tb_rpc": [
+        {
+          "method": [
+            "open",
+            "screen_startup",
+            "startup",
+            "on"
+          ],
+          "delay": 0,
+          "api": {
+            "url": "http://192.168.0.106:9021/app/deviceCtrl/control",
+            "method": "POST",
+            "headers": {
+              "Content-Type": "application/json",
+              "X-Api-Key": "sk-ffc0ff905a2d44b8b791e7f1016fc2d9"
+            },
+            "data": {
+              "devCode": "1000e412010000000000d7c9980a69e0",
+              "key": "on",
+              "value": "1"
+            }
+          }
+        },
+        {
+          "method": [
+            "close",
+            "screen_shutdown",
+            "shutdown",
+            "off"
+          ],
+          "delay": 0,
+          "api": {
+            "url": "http://192.168.0.106:9021/app/deviceCtrl/control",
+            "method": "POST",
+            "headers": {
+              "Content-Type": "application/json",
+              "X-Api-Key": "sk-ffc0ff905a2d44b8b791e7f1016fc2d9"
+            },
+            "data": {
+              "devCode": "1000e412010000000000d7c9980a69e0",
+              "key": "on",
+              "value": "0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "F3-Door-Entrance",
+      "deviceType": "APIDevices",
+      "tb_attributes": [],
+      "static_attributes": {
+        "deviceName": "F3-Door-Entrance",
+        "deviceCode": "DGD7430017101200895:34"
+      },
+      "tb_telemetry": [
+        {
+          "period": 60,
+          "api": {
+            "url": "http://192.168.0.106:9021/app/deviceCtrl/getRunStatus?devCode=DGD7430017101200895:34",
+            "method": "GET",
+            "headers": {
+              "Content-Type": "application/json",
+              "X-Api-Key": "sk-ffc0ff905a2d44b8b791e7f1016fc2d9"
+            }
+          },
+          "pivot": {
+            "path": "data",
+            "key_field": "attrCode",
+            "value_field": "attrValue",
+            "include_keys": [
+              "id",
+              "on"
+            ]
+          }
+        }
+      ],
+      "static_telemetry": {},
+      "tb_rpc": [
+        {
+          "method": [
+            "open",
+            "screen_startup",
+            "startup",
+            "on"
+          ],
+          "delay": 0,
+          "api": {
+            "url": "http://192.168.0.106:9021/app/deviceCtrl/control",
+            "method": "POST",
+            "headers": {
+              "Content-Type": "application/json",
+              "X-Api-Key": "sk-ffc0ff905a2d44b8b791e7f1016fc2d9"
+            },
+            "data": {
+              "devCode": "DGD7430017101200895:34",
+              "key": "doorAOpen",
+              "value": "1"
+            }
+          },
+          "telemetry": {
+            "doorAOpen": 1
+          }
+        },
+        {
+          "method": [
+            "close",
+            "screen_shutdown",
+            "shutdown",
+            "off"
+          ],
+          "delay": 0,
+          "api": {
+            "url": "http://192.168.0.106:9021/app/deviceCtrl/control",
+            "method": "POST",
+            "headers": {
+              "Content-Type": "application/json",
+              "X-Api-Key": "sk-ffc0ff905a2d44b8b791e7f1016fc2d9"
+            },
+            "data": {
+              "devCode": "DGD7430017101200895:34",
+              "key": "doorAOpen",
+              "value": "0"
+            }
+          },
+          "telemetry": {
+            "doorAOpen": 0
+          }
+        }
+      ]
+    }
+  ],
+  "logLevel": "INFO",
+  "enableRemoteLogging": false,
+  "configVersion": "3.7.8"
+}

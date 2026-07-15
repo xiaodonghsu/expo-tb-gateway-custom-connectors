@@ -1,0 +1,137 @@
+{
+  "name": "Hyperfor MQTT Connector",
+  "id": "6e10f520-96ad-4071-9ca9-9fd4a2311689",
+  "broker": {
+    "host": "192.168.4.244",
+    "port": 11883,
+    "username": "bestlink",
+    "password": "bestlink",
+    "clientId": "tb-gateway-hyperfor-mqtt"
+  },
+  "topicFilter": "from/epa/+",
+  "rpcCommandQueue": {
+    "minIntervalSeconds": 1.0,
+    "waitForResponse": true,
+    "responseTimeoutSeconds": 5.0
+  },
+  "deviceProfile": "hperfor-epa-je",
+  "devices": [
+    {
+      "name": "b4-Data-1-switch",
+      "hperfor_client_id": "JR1X400281",
+      "hperfor_gateway_id": "GWGE100345",
+      "delay": {
+        "on": 0,
+        "off": 60
+      }
+    },
+    {
+      "name": "b4-Data-2-switch",
+      "hperfor_client_id": "JR1X400282",
+      "hperfor_gateway_id": "GWGE100345",
+      "delay": {
+        "on": 0,
+        "off": 60
+      }
+    },
+    {
+      "name": "F3-Light-South",
+      "hperfor_client_id": "JR1X400278",
+      "hperfor_gateway_id": "GWGE100345",
+      "delay": {
+        "on": 0,
+        "off": 0
+      }
+    },
+    {
+      "name": "F3-Light-North",
+      "hperfor_client_id": "JR1X400279",
+      "hperfor_gateway_id": "GWGE100345",
+      "delay": {
+        "on": 0,
+        "off": 0
+      }
+    }
+  ],
+  "rpcMethodMaps": [
+    {
+      "method": [
+        "shutdown",
+        "switch_off",
+        "close",
+        "off",
+        "screen_shutdown"
+      ],
+      "rpc_data": {
+        "method": "switch",
+        "params": {
+          "status": "off"
+        }
+      }
+    },
+    {
+      "method": [
+        "startup",
+        "switch_on",
+        "open",
+        "on",
+        "screen_startup"
+      ],
+      "rpc_data": {
+        "method": "switch",
+        "params": {
+          "status": "on"
+        }
+      }
+    }
+  ],
+  "rpcs": [
+    {
+      "rpc_data": {
+        "method": "switch",
+        "params": {
+          "status": "on"
+        }
+      },
+      "mqtt_data": {
+        "topic": "to/epa/{hperfor_gateway_id}",
+        "content": {
+          "bid": 202,
+          "mid": "{build_mid()}",
+          "Children": [
+            {
+              "ClientID": "{hperfor_client_id}",
+              "MoterOperation": 1
+            }
+          ]
+        }
+      },
+      "delay": "on"
+    },
+    {
+      "rpc_data": {
+        "method": "switch",
+        "params": {
+          "status": "off"
+        }
+      },
+      "mqtt_data": {
+        "topic": "to/epa/{hperfor_gateway_id}",
+        "content": {
+          "bid": 202,
+          "mid": "{build_mid()}",
+          "Children": [
+            {
+              "ClientID": "{hperfor_client_id}",
+              "MoterOperation": 2
+            }
+          ]
+        }
+      },
+      "delay": "off"
+    }
+  ],
+  "logLevel": "INFO",
+  "enableRemoteLogging": false,
+  "configVersion": "3.7.8"
+}
