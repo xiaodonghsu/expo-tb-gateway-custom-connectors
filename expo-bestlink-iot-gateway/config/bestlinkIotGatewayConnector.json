@@ -58,6 +58,9 @@
               "devCode": "1000e4120100000000007ff0a85aade0",
               "key": "on",
               "value": "1"
+            },
+            "telemetry": {
+              "SwitchStatus": 1
             }
           }
         },
@@ -80,6 +83,9 @@
               "devCode": "1000e4120100000000007ff0a85aade0",
               "key": "on",
               "value": "0"
+            },
+            "telemetry": {
+              "SwitchStatus": 0
             }
           }
         }
@@ -141,6 +147,9 @@
               "devCode": "1000e412010000000000d7c9980a69e0",
               "key": "on",
               "value": "1"
+            },
+            "telemetry": {
+              "SwitchStatus": 1
             }
           }
         },
@@ -163,6 +172,9 @@
               "devCode": "1000e412010000000000d7c9980a69e0",
               "key": "on",
               "value": "0"
+            },
+            "telemetry": {
+              "SwitchStatus": 0
             }
           }
         }
@@ -222,7 +234,8 @@
             }
           },
           "telemetry": {
-            "doorAOpen": 1
+            "doorAOpen": 1,
+            "SwitchStatus": 1
           }
         },
         {
@@ -247,7 +260,8 @@
             }
           },
           "telemetry": {
-            "doorAOpen": 0
+            "doorAOpen": 0,
+            "SwitchStatus": 0
           }
         }
       ]
