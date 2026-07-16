@@ -1,0 +1,89 @@
+
+切换命令：
+{"bid":321,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF",
+"clientid":"设备在您MQTT服务器上的clientid",
+"host":"服务器IP或是域名", //域名IP都可以
+"port":"服务器端口号",
+"username":"您服务器的登录名",
+"password":"您服务器的密码",
+"subscribe":"平台发布主题",
+"publish":"平台订阅主题"
+} 
+
+命令要完整，不能漏
+
+长度限制：
+char host[48];
+char port[8];
+char clientid[100];
+char username[60];
+char password[100];
+char subscribe[40];
+char publish[40];
+
+u32 dns_flag;
+平台发送用  to/epa/DeviceSN    平台订阅用 from/epa/DeviceSN
+
+
+"subscribe":"平台发布主题",   请注意 这个是设备订阅的 平台发送的主题
+"publish":"平台订阅主题"  请注意 这个是设备发布的，平台订阅的主题
+
+
+注意"" 这个是英文输入，不是中文输入；
+
+都是字符串形式，插网线的设备只支持域名，其他通讯类产品支持域名或是IP都可以
+
+千万不要拿切换服务器命令去测试玩，切换服务器是慎重慎重再慎重的事情，要测试命令可以用其他的命令去测试
+
+示例：
+
+//切换到腾讯云IoT 
+{"bid":321,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF",
+"clientid":"5GYZE50AS6JG14100011",
+"host":"5GYZE50AS6.iotcloud.tencentdevices.com",
+"port":"1883",
+"username":"5GYZE50AS6JG14100011;12010126;LGR5H;2019091236",
+"password":"3fcfb4334de1e7d3c18d885818ab658e0a506f92b61e317def1fcc70ccc3822b;hmacsha256",
+"subscribe":"5GYZE50AS6/JG14100011/control",
+"publish":"5GYZE50AS6/JG14100011/event"
+} 
+
+
+插网线的有区分服务器是域名还是IP
+这里更新了
+
+{"bid":321,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF",
+"clientid":"5GYZE50AS6JG14100011",
+"host":"5GYZE50AS6.iotcloud.tencentdevices.com",
+"dns":1,
+"port":"1883",
+"username":"5GYZE50AS6JG14100011;12010126;LGR5H;2019091236",
+"password":"3fcfb4334de1e7d3c18d885818ab658e0a506f92b61e317def1fcc70ccc3822b;hmacsha256",
+"subscribe":"5GYZE50AS6/JG14100011/control",
+"publish":"5GYZE50AS6/JG14100011/event"
+} 
+
+注意哦：
+"host":"5GYZE50AS6.iotcloud.tencentdevices.com",
+"dns":1,
+主机是域名的  dns 要带1 需要dns
+
+{"bid":321,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF",
+"clientid":"5GYZE50AS6JG14100011",
+"host":"110.42.212.219",
+"dns":0,
+"port":"1883",
+"username":"5GYZE50AS6JG14100011;12010126;LGR5H;2019091236",
+"password":"3fcfb4334de1e7d3c18d885818ab658e0a506f92b61e317def1fcc70ccc3822b;hmacsha256",
+"subscribe":"5GYZE50AS6/JG14100011/control",
+"publish":"5GYZE50AS6/JG14100011/event"
+} 
+
+注意哦：
+"host":"110.42.212.219",
+"dns":0,
+主机是域名的  dns 要带0  不需要dns
+
+万一没有带dns标志的话 会被默认使用ip
+
+

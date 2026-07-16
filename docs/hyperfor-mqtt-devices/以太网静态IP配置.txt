@@ -1,0 +1,133 @@
+设备充当服务器 
+有一个初始服务器IP  PORT  
+当从设备连接之后，可以修改服务器的IP 和port  修改一直设备重启
+从设备就可以连接新的服务器IP 和 port 
+设置初始IP ： 192.168.1.100
+初始port：  2000
+
+可以用UDP直连电脑  只要网关和IP同一个网段
+在用UDP读取设备的IP 和port 
+可以用UDP改写设备的IP 和 port
+1、用330对设备的IP port subnet gateway dns
+
+{"bid":330,
+"DeviceSN":"GWWE100052",
+"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"} 
+
+
+回复：
+
+{"bid":330,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF",
+"ip":"192.168.1.100",
+"port":"2000",
+"subnet":"255.255.255.0",
+"gateway":"192.168.1.1",
+"dns":"114.114.114.114"，
+"static_ip":	0
+} 
+
+2、修改服务器信息
+{"bid":331,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF",
+"DeviceSN":"GWWE10005",
+"ip":"192.168.1.100",
+"port":"2000",
+"subnet":"255.255.255.0",
+"gateway":"192.168.1.1",
+"dns":"114.114.114.114",
+"static_ip":	1  
+} 
+
+"static_ip":	 //可以带或是不带  如果带了 值为0的话会被切换会自动IP
+
+{"bid":331,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF",
+"DeviceSN":"JE14100030",
+"ip":"192.168.1.100",
+"port":"2000",
+"subnet":"255.255.255.0",
+"gateway":"192.168.1.1",
+"dns":"114.114.114.114"
+} 
+
+{"bid":202,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","DeviceSN":"JE14100289",
+"Children":[{"ClientID":"JE14100289","MoterOperation":1}]}    合闸
+
+{"bid":202,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","DeviceSN":"JE14100289",
+"Children":[{"ClientID":"JE14100289","MoterOperation":2}]}    分闸
+
+{"bid":208,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","DeviceSN":"JE14100289","Children":[{"ClientID":"JE14100289"}]}  
+  查询运行数据
+
+//读设备编号
+{"bid":332,
+"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"} 
+
+
+网关+485模式
+socket  通信，没有订阅主题所以要带设备编号
+{"bid":202,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","DeviceSN":"GWWE100052","Children":[{"ClientID":"DB28100067","MoterOperation":1}]}       控制电机
+{"bid":203,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","DeviceSN":"GWWE100052","Children":[{"ClientID":"DB28100051","Parameter":48,"Data":57600}]}  配置参数
+{"bid":204,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","DeviceSN":"GWWE100051","Threshhold":0,"Data":3600}                    配置阈值
+{"bid":205,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","DeviceSN":"GWWE100052","Children":[{"ClientID":"DB28100067"}]}  添加设备SN
+{"bid":206,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","DeviceSN":"GWWE100037","Children":[{"ClientID":"DB28100051"}]}  删除设备SN
+{"bid":207,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","DeviceSN":"GWWE100051"}       查询所有挂载SN的运行参数
+{"bid":208,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","DeviceSN":"GWWE100051","Children":[{"ClientID":"DB28100051"}]}    查询运行数据
+{"bid":210,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","DeviceSN":"GWWE100051","Children":[{"ClientID":"DB28100051"}]}    查询配置数据 
+{"bid":211,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","DeviceSN":"GWWE100051"}            查询网关挂载的所有SN   
+{"bid":213,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","DeviceSN":"GWWE100051","Children":[{"ClientID":"DB28100051"}]}    查询校准数据
+
+
+{"bid":301,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","DeviceSN":"GWWE100051","SysTime":"2023-11-20 10:01:30"} 配置时间
+{"bid":303,"DeviceSN":"GWWE100051","mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"}    恢复出厂设置
+{"bid":304,"DeviceSN":"GWWE100051","mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"}    获取产品信息
+{"bid":305,"DeviceSN":"GWWE100051","mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"}    获取阈值数据
+{"bid":306,"DeviceSN":"GWWE100051","mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"}    删除WiFi
+{"bid":307,"DeviceSN":"GWWE100051","mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"}    重启设备
+{"bid":308,"DeviceSN":"GWWE100051","mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"}    升级 
+{"bid":309,"DeviceSN":"GWWE100051","mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"}   一键删除全部挂载的SN
+
+
+
+
+
+
+{"bid":202,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","DeviceSN":"GWWE100248","Children":[{"ClientID":"EP28100346","MoterOperation":1}]}   
+
+
+
+{"bid":206,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","DeviceSN":"GWWE100232","Children":[{"ClientID":"DB28100194"}]} 
+
+
+{"bid":302,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","DeviceSN":"JE18300190","ServerIP":"192.168.1.78:2000"}
+
+{"bid":303,"DeviceSN":"GWGE100005","mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"} 
+{"bid":211,"DeviceSN":"GWGE100005","mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"}  
+
+{"bid":405,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","DeviceSN":"GWGE100005","Children":[{"ClientID":"000000000003"}]}  添加设备SN
+{"bid":406,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","DeviceSN":"GWGE100005","Children":[{"ClientID":"000000000003"}]}  删除设备SN
+{"bid":402,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","DeviceSN":"GWGE100005","Children":[{"ClientID":"000000000003",
+"DI3DI2DI1DI0":100729089,"PAP0P1P2P3":00000000,"C0C1C2C3":00000000,"Data":0002,"Len":14}]}   分闸
+{"bid":402,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","DeviceSN":"GWGE100005","Children":[{"ClientID":"000000000003",
+"DI3DI2DI1DI0":100729345,"PAP0P1P2P3":00000000,"C0C1C2C3":00000000,"Data":0002,"Len":14}]}   合闸
+
+{"bid":408,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","DeviceSN":"GWGE100005","Children":[{"ClientID":"000000000003"}]}  //查询具体设备数据
+
+
+{"bid":407,"DeviceSN":"GWGE100005","mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"} 
+
+{"bid":202,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","DeviceSN":"JE1X600412",
+"Children":[{"ClientID":"JE1X600412","MoterOperation":2}]}  
+{"bid":208,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","DeviceSN":"JE1X600412","Children":[{"ClientID":"JE1X600412"}]}  
+
+{"result":true,"mid":"6FC05434-BD78-BB99-3F51-29369D42744B","bid":201,"message":0,"DeviceSN":"JE1X600412"}
+
+
+{"bid":331,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF",
+"DeviceSN":"GWGE100245",
+"ip":"192.168.10.19",
+"port":"2000",
+"subnet":"255.255.255.0",
+"gateway":"192.168.10.1",
+"dns":"202.102.224.68",
+"static_ip":	1  
+} 
+

@@ -10,9 +10,9 @@
   },
   "topicFilter": "from/epa/+",
   "rpcCommandQueue": {
-    "minIntervalSeconds": 1.0,
+    "minIntervalSeconds": 1,
     "waitForResponse": true,
-    "responseTimeoutSeconds": 5.0
+    "responseTimeoutSeconds": 5
   },
   "deviceProfile": "hperfor-epa-je",
   "devices": [

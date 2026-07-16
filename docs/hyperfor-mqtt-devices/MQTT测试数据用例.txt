@@ -1,0 +1,85 @@
+
+
+平台下发主题：to/epa/ClientID   
+设备上报主题：from/epa/ClientID   
+注意每个设备的ClientID是不一样的
+
+
+网关相关测试接口
+{"bid":301,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","SysTime":"2023-11-03 10:01:30"}   校时
+
+
+{"bid":303,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"}   恢复出厂设置
+{"bid":304,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"}   获取网关产品信息
+{"bid":305,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"} 	  获取网关阈值	
+{"bid":306,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"}    删除wifi 重新配网
+{"bid":307,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"}   重启网关
+{"bid":308,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"}   升级网关
+{"bid":309,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"}   一键删除全部挂载的SN
+
+
+
+RS485产品接口
+{"bid":202,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","Children":[{"ClientID":"D160000101","MoterOperation":2}]}   电机控制
+{"bid":203,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","Children":[{"ClientID":"D260000001","Parameter":2,"Data":2}]}  ePa_D参数配置 含校准参数 配置参数
+
+{"mid":"F0D5DE5F-2BDD-4FFC-B4E1-761A177A2D72","Children":[{"ClientID":"EP28100080","Parameter":76,"Data":0}],"bid":203} 
+
+{"bid":204,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","Threshhold":0,"Data":3600}                  网关阈值配置
+{"bid":205,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","Children":[{"ClientID":"D160000103"}]}  添加设备SN
+{"bid":206,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","Children":[{"ClientID":"D160000103"}]}  删除设备SN
+{"bid":207,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"}     		                           查询所有挂载SN的运行参数
+{"bid":208,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","Children":[{"ClientID":"D160000101"}]}  查询单个SN的运行参数
+{"bid":209,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","Children":[{"ClientID":"D160000101"}]}  查询单个SN的产品信息
+{"bid":210,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","Children":[{"ClientID":"D160000101"}]}  查询单个SN的配置参数
+{"bid":211,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"}                                                            查询网关挂载的所有SN
+{"bid":212,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"}                                                            请求云同步SN到网关
+{"bid":213,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","Children":[{"ClientID":"D160000101"}]}  查询单个SN的校准参数
+
+
+
+
+
+单品测试用例： 独立式产品WiFi和4G通用 其实跟网关协议一样 只是里面的筛选  孩子节点就一个
+
+{"bid":202,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","Children":[{"ClientID":"L260000001","MoterOperation":2}]}       控制电机
+{"bid":203,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","Children":[{"ClientID":"L260000001","Parameter":48,"Data":57600}]}  配置参数
+{"bid":204,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","Threshhold":0,"Data":3600}                    配置阈值
+{"bid":208,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","Children":[{"ClientID":"L260000001"}]}    查询运行数据
+{"bid":210,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","Children":[{"ClientID":"L260000001"}]}    查询配置数据 
+{"bid":213,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","Children":[{"ClientID":"L260000001"}]}    查询校准数据
+
+{"bid":301,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","SysTime":"2023-05-18 10:01:30"} 配置时间
+{"bid":303,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"}    恢复出厂设置
+{"bid":304,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"}    获取产品信息
+{"bid":305,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"}    获取阈值数据
+{"bid":306,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"}    删除WiFi
+{"bid":307,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"}    重启设备
+{"bid":308,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF"}    升级
+
+
+
+//切换到腾讯云IoT
+
+{"bid":101}
+{"bid":202,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF","Children":[{"ClientID":"JG14100064","MoterOperation":1}]}  
+
+
+增加的321命令 
+//切换到腾讯云IoT 
+{"bid":321,"mid":"6F9619FF-8B86-D011-B42D-00C04FC964FF",
+"clientid":"5GYZE50AS6JG14100011",
+"host":"5GYZE50AS6.iotcloud.tencentdevices.com",
+"port":"1883",
+"username":"5GYZE50AS6JG14100011;12010126;LGR5H;2019091236",
+"password":"3fcfb4334de1e7d3c18d885818ab658e0a506f92b61e317def1fcc70ccc3822b;hmacsha256",
+"subscribe":"5GYZE50AS6/JG14100011/control",
+"publish":"5GYZE50AS6/JG14100011/event"
+} 
+
+
+
+
+
+
+
